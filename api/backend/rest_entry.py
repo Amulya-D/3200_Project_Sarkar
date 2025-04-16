@@ -5,6 +5,10 @@ from backend.laundromat.laundromat_routes import laundromat
 from backend.orders.orders_routes import orders
 from api.api_for_karen.order_details import order_details
 
+
+# 000000 test for analysis by MQ
+from backend.analytics.analytics_routes import analytics_blueprint
+
 import os
 from dotenv import load_dotenv
 
@@ -44,8 +48,17 @@ def create_app():
     app.register_blueprint(orders, url_prefix='/orders')
     app.register_blueprint(order_details, url_prefix = '/od')
 
+    # 000000 test for analysis by MQ
+    app.register_blueprint(analytics_blueprint, url_prefix='/analytics')
 
+    # TEST 4000 by MQ delete later
+    @app.route("/")
+    def index():
+        return {"message": "test message for flask port 4000"}
 
     # Don't forget to return the app object
     return app
 
+if __name__ == "__main__":
+    app = create_app()
+    app.run(host="0.0.0.0", port = 4000)
