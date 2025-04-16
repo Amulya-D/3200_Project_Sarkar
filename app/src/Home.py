@@ -65,6 +65,20 @@ if st.button('Act as Mohammad, an USAID worker',
     st.session_state['first_name'] = 'Mohammad'
     st.switch_page('pages/10_USAID_Worker_Home.py')
 
+if st.button("Act as Karen, a retired seamstress", 
+             type='primary', 
+             use_container_width=True):
+    # When user clicks, authenticate and set session info
+    st.session_state['authenticated'] = True
+    st.session_state['role'] = 'retired_seamstress'
+    st.session_state['first_name'] = 'Karen'
+    
+    # Log the login action
+    logger.info("Logging in as Karen Smith Persona")
+    
+    # Navigate to her landing page (update the path if needed)
+    st.switch_page('pages/KarenPreferences.py')
+
 if st.button('Act as System Administrator', 
             type = 'primary', 
             use_container_width=True):
@@ -74,4 +88,7 @@ if st.button('Act as System Administrator',
     st.switch_page('pages/20_Admin_Home.py')
 
 
+
+
+st.set_page_config(page_title="Forecasting Tool")
 
