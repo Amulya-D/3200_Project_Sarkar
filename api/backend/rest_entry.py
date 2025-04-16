@@ -1,7 +1,9 @@
 from flask import Flask
 from backend.db_connection import db
+from backend.karen_routes.karen_routes import karen_bp
 from backend.laundromat.laundromat_routes import laundromat
 from backend.orders.orders_routes import orders
+from api.api_for_karen.order_details import order_details
 
 import os
 from dotenv import load_dotenv
@@ -40,6 +42,7 @@ def create_app():
     # and give a url prefix to each
     app.register_blueprint(laundromat, url_prefix='/l')
     app.register_blueprint(orders, url_prefix='/orders')
+    app.register_blueprint(order_details, url_prefix = '/od')
 
 
 
